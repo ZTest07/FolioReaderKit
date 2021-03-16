@@ -150,13 +150,16 @@ footer, header, hgroup, menu, nav, section {
 html {
     -webkit-text-size-adjust: none; /* Never autoresize text */
     padding: 0 0 !important;
+    overflow-y: scroll !important;
 }
 
 body {
     padding: 40px 20px !important;
-    overflow: paged-x;
-    overflow: -webkit-paged-x;
-    overflow: -o-paged-x;
+/*    overflow: hidden !important;*/
+    /* EDITADO ACÁ */
+    overflow: paged-y;
+    overflow: -webkit-paged-y;
+    overflow: -o-paged-y;
 }
 
 * {
@@ -320,28 +323,28 @@ html, body {
 }
 
 html {
-    background-color: #231e4e !important;
+    background-color: #FFFFFF !important;
 }
 
 body {
-    background-color: #231e4e !important;
+    background-color: transparent !important;
 }
 
 p, div, span:not(.epub-media-overlay-playing), a, i {
-    color: #F9F4F2 !important;
+    color: #131313 !important;
     background-color: transparent !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #F9F4F2 !important;
+    color: #131313 !important;
 }
 
 html.nightMode, html.nightMode body {
-    background-color: #000000 !important;
+    background-color: #131313 !important;
 }
 
 .nightMode p, .nightMode div, .nightMode span:not(.epub-media-overlay-playing), .nightMode a, .nightMode i {
-    color: #F9F4F2 !important;
+    color: #767676 !important;
     background-color: transparent !important;
 }
 

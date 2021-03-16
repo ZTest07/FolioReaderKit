@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 //import ZFDragableModalTransition
 public extension Notification.Name {
     static let pageDidLoadNotification = Notification.Name("pageDidAppearNotif")
@@ -1014,7 +1015,7 @@ open class FolioReaderCenter: UIViewController, UICollectionViewDelegate, UIColl
     public func findPageByHref(_ href: String) -> Int {
         var count = 0
         for item in self.book.spine.spineReferences {
-            if item.resource.href == href {
+            if item.resource.href == href || item.resource.href == "EPUB/"+href {
                 return count
             }
             count += 1
@@ -1340,26 +1341,26 @@ open class FolioReaderCenter: UIViewController, UICollectionViewDelegate, UIColl
         }
 
         // Perform the page after a short delay as the collection view hasn't completed it's transition if this method is called (the index paths aren't right during fast scrolls).
-        delay(0.2, closure: { [weak self] in
-            if (self?.readerConfig.scrollDirection == .horizontalWithVerticalContent),
-                let cell = ((scrollView.superview as? UIWebView)?.delegate as? FolioReaderPage) {
-                let currentIndexPathRow = cell.pageNumber - 1
-                self?.currentWebViewScrollPositions[currentIndexPathRow] = scrollView.contentOffset
-            }
-
-            if (scrollView is UICollectionView) {
-                guard let instance = self else {
-                    return
-                }
-                
-                if instance.totalPages > 0 {
-                    instance.updateCurrentPage()
-                    instance.delegate?.pageItemChanged?(instance.getCurrentPageItemNumber())
-                }
-            } else {
-                self?.scrollScrubber?.scrollViewDidEndDecelerating(scrollView)
-            }
-        })
+//        delay(0.2, closure: { [weak self] in
+//            if (self?.readerConfig.scrollDirection == .horizontalWithVerticalContent),
+//                let cell = ((scrollView.superview as? WKWebView)?.delegate as? FolioReaderPage) {
+//                let currentIndexPathRow = cell.pageNumber - 1
+//                self?.currentWebViewScrollPositions[currentIndexPathRow] = scrollView.contentOffset
+//            }
+//
+//            if (scrollView is UICollectionView) {
+//                guard let instance = self else {
+//                    return
+//                }
+//                
+//                if instance.totalPages > 0 {
+//                    instance.updateCurrentPage()
+//                    instance.delegate?.pageItemChanged?(instance.getCurrentPageItemNumber())
+//                }
+//            } else {
+//                self?.scrollScrubber?.scrollViewDidEndDecelerating(scrollView)
+//            }
+//        })
     }
 
     open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

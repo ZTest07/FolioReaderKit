@@ -92,12 +92,29 @@ class FREpubParser: NSObject {
             throw FolioReaderError.bookNotAvailable
         }
         
+//        do {
+//            let bookPath = URL(fileURLWithPath: withEpubPath)
+//            let encryptedEpubData = try Data(contentsOf: bookPath)
+//            guard let keyData = decrpytionKey.data(using: .utf8) else { throw FolioReaderError.decrpytionFailed }
+//            let decryptor = ePubDecryptor(with: encryptedEpubData as NSData, and: keyData.sha256(data: keyData) as NSData)
+//            guard let decryptedEpubData = try decryptor.decrypt() else { throw FolioReaderError.decrpytionFailed }
+//
+//            bookZipEntries = try ZipContainer.open(container: decryptedEpubData)
+//
+//            resourcesBasePath = "bookprovider://localHostBooks/\(bookName)/"
+//            book.baseURL = URL(string: "bookprovider:/localHostBooks/\(bookName)/")!
+//            try readContainer()
+//            try readOpf()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+        
         do {
             let bookPath = URL(fileURLWithPath: withEpubPath)
-            let encryptedEpubData = try Data(contentsOf: bookPath)
-            guard let keyData = decrpytionKey.data(using: .utf8) else { throw FolioReaderError.decrpytionFailed }
-            let decryptor = ePubDecryptor(with: encryptedEpubData as NSData, and: keyData.sha256(data: keyData) as NSData)
-            guard let decryptedEpubData = try decryptor.decrypt() else { throw FolioReaderError.decrpytionFailed }
+            let decryptedEpubData = try Data(contentsOf: bookPath)
+//            guard let keyData = decrpytionKey.data(using: .utf8) else { throw FolioReaderError.decrpytionFailed }
+//            let decryptor = ePubDecryptor(with: encryptedEpubData as NSData, and: keyData.sha256(data: keyData) as NSData)
+//            guard let decryptedEpubData = try decryptor.decrypt() else { throw FolioReaderError.decrpytionFailed }
             
             bookZipEntries = try ZipContainer.open(container: decryptedEpubData)
             

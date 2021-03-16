@@ -98,34 +98,34 @@ open class FolioReaderConfig: NSObject {
     // MARK: Colors
 
     /// Base header custom TintColor
-    open var tintColor = UIColor(rgba: "#F9F4F2")
+    open var tintColor = UIColor(rgba: "#6ACC50")
 
     /// Menu background color
-    open var menuBackgroundColor = UIColor(rgba: "#231E4E")
+    open var menuBackgroundColor = UIColor.white
 
     /// Menu separator Color
     open var menuSeparatorColor = UIColor(rgba: "#D7D7D7")
 
     /// Menu text color
-    open var menuTextColor = UIColor(rgba: "#F9F4F2")
+    open var menuTextColor = UIColor(rgba: "#767676")
 
     /// Menu text color
-    open var menuTextColorSelected = UIColor(rgba: "#D2D3DB")
+    open var menuTextColorSelected = UIColor(rgba: "#6ACC50")
+    
+    /// Day mode background color
+    open var daysModeBackground = UIColor.white
     
     // Day mode nav color
-    open var daysModeNavBackground = UIColor(rgba: "#231E4E")
-
-    /// Day mode background color
-    open var daysModeBackground = UIColor(rgba: "#231E4E")
+    open var daysModeNavBackground = UIColor.white
     
-    // Night mode nav color
-    open var nightModeNavBackground = UIColor(rgba: "#131313")
+    // Day mode nav color
+    open var nightModeNavBackground = UIColor(rgba: "#F4E49F")
     
     /// Night mode background color
-    open var nightModeBackground = UIColor(rgba: "#000000")
+    open var nightModeBackground = UIColor(rgba: "#131313")
 
     /// Night mode menu background color
-    open var nightModeMenuBackground = UIColor(rgba: "#1E1E1E")
+    open var nightModeMenuBackground = UIColor(rgba: "#F4E49F")
 
     /// Night mode separator color
     open var nightModeSeparatorColor = UIColor(white: 0.5, alpha: 0.2)
@@ -142,7 +142,7 @@ open class FolioReaderConfig: NSObject {
     open var scrollDirection: FolioReaderScrollDirection = .defaultVertical
 
     /// Enable or disable hability to user change scroll direction on menu.
-    open var canChangeScrollDirection = true
+    open var canChangeScrollDirection = false
 
     /// Enable or disable hability to user change font style on menu.
     open var canChangeFontStyle = true
@@ -151,7 +151,7 @@ open class FolioReaderConfig: NSObject {
     open var shouldHideNavigationOnTap = true
 
     /// Allow sharing option, if `false` will hide all sharing icons and options
-    open var allowSharing = true
+    open var allowSharing = false
 
     /// Enable TTS (Text To Speech)
     open var enableTTS = true

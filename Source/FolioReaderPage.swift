@@ -565,8 +565,11 @@ open class FolioReaderPage: UICollectionViewCell, WKNavigationDelegate, UIGestur
                 }
                 let frameHeight = webView.frame.height
                 let lastPageHeight = frameHeight * CGFloat(1) - CGFloat(Double(contentHeight))
-                self?.colorView.frame = CGRect(x: webView.frame.width * CGFloat(0), y: webView.frame.height - lastPageHeight, width: webView.frame.width, height: lastPageHeight)
+//                self?.colorView.frame = CGRect(x: webView.frame.width * CGFloat(0), y: webView.frame.height - lastPageHeight, width: webView.frame.width, height: lastPageHeight)
+                self?.colorView.frame = CGRect(x: webView.frame.width * CGFloat(Double(contentHeight)), y: webView.frame.height - lastPageHeight, width: webView.frame.width, height: lastPageHeight)
             }
+        }else{
+            self.colorView.frame = CGRect.zero
         }
     }
     
