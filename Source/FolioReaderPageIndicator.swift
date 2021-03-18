@@ -90,6 +90,8 @@ class FolioReaderPageIndicator: UIView {
         guard let currentProgress = folioReader.readerCenter?.getGlobalReadingProgress,
             let percentAsString = percentFormatter.string(for: currentProgress * 100.0) else { return }
         pagesLabel.text = "\(percentAsString) of " + self.readerConfig.localizedPercentageOfBookCompleted
+        /*Oculta texto*/
+        pagesLabel.text = ""
         reloadView(updateShadow: false)
     }
 }
