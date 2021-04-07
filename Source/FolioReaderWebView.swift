@@ -349,6 +349,8 @@ open class FolioReaderWebView: WKWebView {
             menuItems = [yellowItem, greenItem, blueItem, pinkItem, underlineItem]
         } else {
             // default menu
+//            menuItems = [highlightItem, highlightNoteItem, defineItem]
+            //Quita define
             menuItems = [highlightItem, highlightNoteItem, defineItem]
             
             if self.book.hasAudio || self.readerConfig.enableTTS {

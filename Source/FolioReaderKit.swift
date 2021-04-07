@@ -321,9 +321,13 @@ extension FolioReader {
         }
         set {
             guard let bookId = BookProvider.shared.currentBook.name else {
+                print("NO BOOK ID")
                 return
             }
             do {
+                print("SI BOOK ID")
+                print("BOOK ID \(bookId)")
+                print("-----\(newValue)")
                 let json = try JSONEncoder().encode(newValue)
                 self.defaults.set(json, forKey: bookId)
             } catch {
@@ -363,7 +367,7 @@ extension FolioReader {
     /// Save Reader state, book, page and scroll offset.
     @objc open func saveReaderState() {
         guard isReaderOpen, let currentPage = self.readerCenter?.currentPage else { return }
-        
+        print("GUARDA EN DONDE SE QUEDA")
         currentPage.webView?.js("getCurrentPosition(\(self.readerContainer?.readerConfig.scrollDirection == .horizontal))", completionHandler: { [weak self] (callback, error) in
             guard error == nil,
                 let strongSelf = self,
@@ -371,6 +375,7 @@ extension FolioReader {
                 let currentPageNumber = strongSelf.readerCenter?.currentPageNumber,
                 let cfi = EpubCFI.generate(chapterIndex: currentPageNumber - 1, odmStr: currentPosition)
                 else { return }
+            print(cfi)
             strongSelf.savedPositionForCurrentBook = cfi
             strongSelf.readerCenter?.pageDelegate?.userCFIChanged?(cfi: cfi.standardizedFormat)
         })
@@ -378,6 +383,7 @@ extension FolioReader {
 
     /// Closes and save the reader current instance.
     open func close() {
+        print("CLOSE")
         self.saveReaderState()
         self.isReaderOpen = false
         self.isReaderReady = false

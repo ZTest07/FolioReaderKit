@@ -304,19 +304,27 @@ open class FolioReaderCenter: UIViewController, UICollectionViewDelegate, UIColl
         configureNavBarButtons()
         setCollectionViewProgressiveDirection()
 
-        
-        pageDelegate?.getUserCFI?(completionHandler: { [weak self] (cfiString) in
-            guard let stongSelf = self else { return }
-            var cfi = stongSelf.folioReader.savedPositionForCurrentBook
-            if let cfiStr = cfiString, let parsedCFI = EpubCFI.parse(cfi: cfiStr) {
-                cfi = parsedCFI
-                stongSelf.folioReader.savedPositionForCurrentBook = parsedCFI
-            }
-            guard let userCFI = cfi, userCFI.nodes.count > 2 else { return }
-            let pageNumber = userCFI.nodes[1].index / 2
-            stongSelf.changePageWith(page: pageNumber)
-            stongSelf.currentPageNumber = pageNumber
-        })
+        print("RELOAD DATA")
+        let cfi = self.folioReader.savedPositionForCurrentBook
+        guard let userCFI = cfi, userCFI.nodes.count > 2 else { return }
+        let pageNumber = userCFI.nodes[1].index / 2
+        print(userCFI)
+        print("PAGENUMBER: \(pageNumber)")
+        self.folioReader.savedPositionForCurrentBook = cfi
+        self.changePageWith(page: pageNumber)
+        self.currentPageNumber = pageNumber
+//        pageDelegate?.getUserCFI?(completionHandler: { [weak self] (cfiString) in
+//            guard let stongSelf = self else { return }
+//            var cfi = stongSelf.folioReader.savedPositionForCurrentBook
+//            if let cfiStr = cfiString, let parsedCFI = EpubCFI.parse(cfi: cfiStr) {
+//                cfi = parsedCFI
+//                stongSelf.folioReader.savedPositionForCurrentBook = parsedCFI
+//            }
+//            guard let userCFI = cfi, userCFI.nodes.count > 2 else { return }
+//            let pageNumber = userCFI.nodes[1].index / 2
+//            stongSelf.changePageWith(page: pageNumber)
+//            stongSelf.currentPageNumber = pageNumber
+//        })
     }
 
     // MARK: Change page progressive direction
@@ -1493,7 +1501,6 @@ extension FolioReaderCenter: FolioReaderPageDelegate {
             if isFirstLoad {
                 updateCurrentPage(page)
                 isFirstLoad = false
-                
                 pageDelegate?.getUserCFI?(completionHandler: { [weak self] (cfiString) in
                     guard let cfiStr = cfiString,
                         let cfi = EpubCFI.parse(cfi: cfiStr) else {
