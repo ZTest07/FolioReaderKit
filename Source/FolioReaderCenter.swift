@@ -791,7 +791,11 @@ open class FolioReaderCenter: UIViewController, UICollectionViewDelegate, UIColl
         }
 
         UIView.animate(withDuration: animated ? 0.3 : 0, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
+            ///workaround for scrolling bug in ios 14, set paging enabled to false before scroll to item and then set it to true after scroll to item at particular indexpath
+            self.collectionView.isPagingEnabled = false
             self.collectionView.scrollToItem(at: indexPath, at: .direction(withConfiguration: self.readerConfig), animated: false)
+            self.collectionView.isPagingEnabled = true
+
         }) { (finished: Bool) -> Void in
             completion?()
         }
@@ -1393,6 +1397,8 @@ open class FolioReaderCenter: UIViewController, UICollectionViewDelegate, UIColl
     @objc func closeReader(_ sender: UIBarButtonItem) {
         dismiss()
         folioReader.close()
+        navigationController?.parent?.navigationController?.popViewController(animated: false)
+        
     }
 
     /**
