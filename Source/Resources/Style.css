@@ -10,6 +10,7 @@
 /*.lato, .lato p, .lato span, .lato div { font-family: "Lato", serif !important; }*/
 /*.lora, .lora p, .lora span, .lora div { font-family: "Lora", serif !important; }*/
 /*.raleway, .raleway p, .raleway span, .raleway div { font-family: "Raleway", sans-serif !important; }*/
+
 @font-face { /* regular */
     font-family: "Andada";
     font-weight: normal;
@@ -150,16 +151,17 @@ footer, header, hgroup, menu, nav, section {
 html {
     -webkit-text-size-adjust: none; /* Never autoresize text */
     padding: 0 0 !important;
-    overflow-y: scroll !important;
+/*    overflow-y: scroll !important;*/
+    overflow: hidden;
 }
 
 body {
     padding: 40px 20px !important;
 /*    overflow: hidden !important;*/
     /* EDITADO ACÁ */
-    overflow: paged-y;
-    overflow: -webkit-paged-y;
-    overflow: -o-paged-y;
+    overflow: paged-x;
+    overflow: -webkit-paged-x;
+    overflow: -o-paged-x;
 }
 
 * {
@@ -243,10 +245,12 @@ h1 ,h2 ,h3 ,h4 ,h5 ,h6 {
 }
 
 /* allow breaking of words on headers and anchors as they tend to be larger font size or contain longer words */
+
 a, h1, h2, h3, h4, h5, h6 {
     word-break: break-word !important;
     -webkit-hyphens: none !important;
     hyphens: none !important;
+    text-transform: capitalize;
 }
 
 /* Begin Ted */
@@ -322,22 +326,48 @@ html, body {
     -webkit-transition: all 0.6s ease;
 }
 
+/*html {*/
+/*    background-color: #FFFFFF !important;*/
+/*}*/
+/**/
+/*body {*/
+/*    background-color: transparent !important;*/
+/*    overflow: paged-x;*/
+/*     overflow: -webkit-paged-x;*/
+/*     overflow: -o-paged-x;*/
+/*}*/
+
+
 html {
-    background-color: #FFFFFF !important;
+    -webkit-text-size-adjust: none; /* Never autoresize text */
+    padding: 0 0 !important;
+    overflow-x: scroll !important;
+    overflow: paged-x;
+    overflow: -webkit-paged-x;
+    overflow: -o-paged-x;
 }
 
 body {
-    background-color: transparent !important;
+   padding: 40px 20px !important;
+   overflow: hidden !important;
+   /* EDITADO ACÃ */
+   overflow: paged-x;
+   overflow: -webkit-paged-x;
+   overflow: -o-paged-x;
 }
 
-p, div, span:not(.epub-media-overlay-playing), a, i {
-    color: #131313 !important;
-    background-color: transparent !important;
-}
+/*p, div, span:not(.epub-media-overlay-playing), a, i {*/
+/*    color: #131313 !important;*/
+/*    background-color: transparent !important;*/
+/*}*/
 
-h1, h2, h3, h4, h5, h6 {
-    color: #131313 !important;
-}
+/*h1, h2, h3, h4, h5, h6 {*/
+/*    color: #131313 !important;*/
+/*}*/
+
+/*h1, h2, h3, h4, h5, h6 {*/
+/*    text-transform: uppercase*/
+/*}*/
 
 html.nightMode, html.nightMode body {
     background-color: #131313 !important;
