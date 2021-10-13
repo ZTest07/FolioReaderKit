@@ -39,10 +39,12 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
 
         segmentedControl = UISegmentedControl(items: segmentedControlItems)
+        
+        ///to set the segment controller segment width adjust to the width of the text
+        ///as some languages may have longer text lengths for segment titles
+        segmentedControl.apportionsSegmentWidthsByContent = true
         segmentedControl.addTarget(self, action: #selector(PageViewController.didSwitchMenu(_:)), for: UIControl.Event.valueChanged)
         segmentedControl.selectedSegmentIndex = index
-        segmentedControl.setWidth(100, forSegmentAt: 0)
-        segmentedControl.setWidth(100, forSegmentAt: 1)
         self.navigationItem.titleView = segmentedControl
 
         viewList = [viewControllerOne, viewControllerTwo]
